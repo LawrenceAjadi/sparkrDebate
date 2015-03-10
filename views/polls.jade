@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    .page-header
+        h3 Polls Management
+
+    table.table
+        thead
+            tr
+                th(style='width:130px') Date
+                th(style='width:250px') Question
+                th URL
+                th Embed URL (widget)
+        tbody
+            each poll, i in polls
+                tr
+                    td
+                        | #{moment(poll.date).format('DD/MM/YYYY (h:mm)')}
+                    td
+                        | #{poll.name}
+                    td
+                        a(href='/' + poll.poll) open
+                    td
+                        input.form-control.input-sm(type='text', value='<script src="' + url + '/widget/' + poll.poll + '"></script>')
+
+
+    a.btn.btn-primary(href='/create')
+        i.fa.fa-plus.fa-lg
+        | Create New Poll
+

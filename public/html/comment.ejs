@@ -1,0 +1,7 @@
+<div class="col-md-4" style="margin-bottom: 10px">
+  <div data-id="<%= _id %>" style="margin-bottom: 0px;" class="well well-sm <%= type %> comment"><%= comment %></div>
+  <% if (anonymous === false) { %>
+  <div class="small text-left" style="float:left">by&nbsp;<strong><%= user %></strong></div>
+  <% } %>
+  <div class="small text-right"> <i class="fa fa-comment"></i><%= noteCount %>&nbsp;&nbsp;<i class="fa fa-cube"></i><%= sparkrCount %></div>
+</div>

@@ -1,0 +1,47 @@
+extends layout
+block content
+    .question(data-id=question._id.toString())
+    div(style='border: 1px solid #000;text-align: center;padding: 5px;min-width: 500px;min-height: 250px;')
+        if question.loginToVote && !user
+            h2 LOCKED POLL
+            | Please Login
+            br
+            | askked by @dsanel
+            br
+            br
+            .row.loginbuttons
+                .col-xs-4
+                    a.btn.btn-twitter.btn-social(href='/auth/twitter', style='width:150px')
+                        i.fa.fa-twitter
+                        | Twitter
+                .col-xs-4
+                    a.btn.btn-email.btn-social.show-login-form(style='width:150px')
+                        i.fa.fa-envelope
+                        | E-mail
+                .col-xs-4
+                    a.btn.btn-facebook.btn-social(href='/auth/facebook', style='width:150px')
+                        i.fa.fa-facebook
+                        | Facebook
+        else
+            h2 #{question.name}
+            | asked by #{question.user.profile.name}
+            br
+            br
+            .row
+                .col-xs-12
+                    div.progress(style='margin-bottom: 0px;')
+                        div.progress-bar(style='width: #{percentage1}%') #{percentage1}%
+                        div.progress-bar.progress-bar-danger(style='width: #{percentage2}%') #{percentage2}%
+            .row
+                .col-xs-4(style='text-align: left;')
+                    strong.answer1Color(data-id=question.answers[0]._id.toString(), style='cursor:pointer; font-size: #{ question.answers[0]._id.toString() == vote.answer ? "45px" : "20px" };') #{question.answers[0].name}
+                    span (#{question.answers[0].votes} Votes)
+                .col-xs-4
+                    br
+                    a.btn.btn-default.btn-sm(href= url + '/' + question.poll , target="_blank", style='margin-top: 7px;') See More
+                .col-xs-4(style='text-align: right;')
+                    span (#{question.answers[1].votes} Votes)
+                    strong.answer2Color(data-id=question.answers[1]._id.toString(), style='cursor:pointer; font-size: #{ question.answers[1]._id.toString() == vote.answer ? "45px" : "18px" };') #{question.answers[1].name}
+        img(src='/images/sparkr_logo_black.svg', style='height: 40px; margin-top: 10px;')
+        br
+        br

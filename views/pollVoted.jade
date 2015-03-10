@@ -1,0 +1,82 @@
+extends layout
+block content
+    script(type='text/javascript').
+        var questionObject = !{JSON.stringify(question)};
+        var user = !{JSON.stringify(userId)};
+        var cookie = !{JSON.stringify(cookie)};
+    br
+    br
+    .row
+        .col-md-12.left
+            .question(data-id=question._id.toString())
+            .answer1(data-id=question.answers[0]._id.toString())
+            .answer2(data-id=question.answers[1]._id.toString())
+            .vote(data-answer=vote.answer.toString())
+            .poll(data-id=question.poll.toString())
+            h2.text-center
+                strong #{question.name}
+            h4.text-center
+                strong #{question.user ? question.user.profile.name : 'anonymous'}
+                |  asked
+            .row
+                .col-md-2.text-center
+                    if !comment
+                        h2(style='margin-top: 0px; color:#2780e3')
+                            strong.change-vote-answer1(data-id=question.answers[0]._id.toString()) #{question.answers[0].name}
+                        | (#{question.answers[0].votes} Votes)
+                    else
+                        h2(style='margin-top: 0px; color:#2780e3')
+                            strong.change-vote-answer1-new(data-id=question.answers[0]._id.toString()) #{question.answers[0].name}
+                        | (#{question.answers[0].votes} Votes)
+                .col-md-8
+                    div.progress
+                        if !comment
+                            div.progress-bar.change-vote-answer1(data-id=question.answers[0]._id.toString(), style='width: #{percentage1}%') #{percentage1}%
+                            div.progress-bar.progress-bar-danger.change-vote-answer2(data-id=question.answers[1]._id.toString(), style='width: #{percentage2}%') #{percentage2}%
+                        else
+                            div.progress-bar.change-vote-answer1-new(data-id=question.answers[0]._id.toString(), style='width: #{percentage1}%') #{percentage1}%
+                            div.progress-bar.progress-bar-danger.change-vote-answer2-new(data-id=question.answers[1]._id.toString(), style='width: #{percentage2}%') #{percentage2}%
+                .col-md-2.text-center
+                    if !comment
+                        h2(style='margin-top: 0px; color:#ff0039')
+                            strong.change-vote-answer2(data-id=question.answers[1]._id.toString()) #{question.answers[1].name}
+                        | (#{question.answers[1].votes} Votes)
+                    else
+                        h2(style='margin-top: 0px; color:#ff0039')
+                            strong.change-vote-answer2-new(data-id=question.answers[1]._id.toString()) #{question.answers[1].name}
+                        | (#{question.answers[1].votes} Votes)
+            br
+            if question.loginToComment && !user
+                h4.text-center You must login to comment on this poll
+            else
+                if !comment
+                    .add-comment-form
+                        hr
+                        h3.text-center Type your reason or click/tap on arguments you agree with below
+                        .row
+                            .col-md-12
+                                | Reason
+                                textarea#reason.form-control(rows='3', style='resize: none;')
+                        .row(style='margin-top:10px')
+                            .col-md-10
+                                .text-center
+                                    a.add-source add source/reference
+                                .source-panel(style='display:none')
+                                    | Source
+                                    input#source.form-control(type='text')
+                            .col-md-2
+                                button#save-reason.btn.btn-primary.btn-lg.btn-block(type="button") Submit
+                                .text-center
+                                    button#skip-reason.btn.btn-link(type="button") skip
+                // hr(style='margin-top: 0px;')
+                h3.no-comments.text-center(style='display:none') This poll still doesn't have comments.
+                .row.usercomments(style='display:none')
+                    .col-md-6
+                        .row.comments
+                    .col-md-6
+                        .row.comments
+                .row.existingcomments(style='display:none')
+                    .col-md-12
+                        .row.comments
+        // Right panel - Sparkr
+        include partials/pollRightPanel

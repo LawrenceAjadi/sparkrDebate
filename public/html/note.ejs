@@ -1,0 +1,6 @@
+<div style="margin-bottom: 5px;" class="row">
+  <div class="col-md-8 <%= note.agree ? '' : 'col-md-offset-4' %>">
+    <div style="margin-bottom: 0px;" class="well well-sm"><%= note.note %></div>
+    <div class="small text-right">by&nbsp;<strong><%= note.user ? note.user.profile.name : 'anonymous' %></strong></div>
+  </div>
+</div>

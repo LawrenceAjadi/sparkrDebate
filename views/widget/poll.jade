@@ -1,0 +1,62 @@
+extends layout
+
+block content
+    .question(data-id=question._id.toString())
+    div(style='border: 1px solid #000;text-align: center;padding: 5px;min-width: 400px;min-height: 250px; background-color: #c7193c')
+        if question.loginToVote && !user
+            .loginForVote(style='display:#{messages.errors ? "none" : "block" }')
+                h2#test LOCKED POLL
+                | Please Login
+                | askked by @#{question.user.profile.name}
+                br
+                br
+                br
+                .row.loginbuttons
+                    .col-xs-4
+                        a.btn.btn-twitter.btn-social(href='#', style='width:150px')
+                            i.fa.fa-twitter
+                            | Twitter
+                    .col-xs-4
+                        a.btn.btn-email.btn-social.show-login-form(style='width:150px')
+                            i.fa.fa-envelope
+                            | E-mail
+                    .col-xs-4
+                        a.btn.btn-facebook.btn-social(href='#', style='width:150px')
+                            i.fa.fa-facebook
+                            | Facebook
+
+            form.login-form.form-horizontal(method='POST', action='/loginWidget', role='form', style='display:#{messages.errors ? "block" : "none" }')
+                br
+                input(type='hidden', name='_csrf', value=_csrf)
+                .form-group
+                    label.col-sm-2.control-label(for='email') Email
+                    .col-sm-10
+                        input#email.form-control(type='email', placeholder='Email', name='email', autofocus=true)
+                .form-group
+                    label.col-sm-2.control-label(for='password') Password
+                    .col-sm-10
+                        input#password.form-control(type='password', name='password', placeholder='Password')
+                .form-group(style='text-align: left')
+                    label.col-sm-2.control-label
+                    .col-sm-10
+                        button.btn.btn-primary(type='submit')
+                            i.fa.fa-sign-in
+                            | Login
+                        button#cancel.btn.btn-default(type='button', style='margin-left:5px')
+                            i.fa.fa-sign-in
+                            | Cancel
+                        span(style='margin-left:5px; color: #FF0000;')
+                            | #{messages.errors ? messages.errors[0].msg : "" }
+        else
+            h2.maintitle #{question.name}
+            p.maintitle asked by @#{question.user.profile.name}
+            br
+            .row
+                .col-xs-6
+                    button.btn.btn-primary.btn-md.btn-block.btn-answer(type='button',data-id=question.answers[0]._id.toString()) #{question.answers[0].name}
+                .col-xs-6
+                    button.btn.btn-danger.btn-md.btn-block.btn-answer(type='button', data-id=question.answers[1]._id.toString()) #{question.answers[1].name}
+        br
+        img(src='/images/sparkr_logo_white.svg', style='height: 40px;')
+        br
+        br

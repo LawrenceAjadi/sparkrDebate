@@ -1,0 +1,164 @@
+@import "lib/bootstrap/bootstrap";
+@import "lib/bootstrap-cosmo";
+@import "lib/font-awesome/font-awesome";
+@import "lib/ionicons/ionicons";
+@import "lib/bootstrap-social";
+@import "themes/cosmo";
+
+// Scaffolding
+// -------------------------
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 60px;
+  margin-bottom: 75px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+
+  p,
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+// Navbar
+// -------------------------
+
+.navbar-nav img {
+  width: 30px;
+  height: 30px;
+  margin: -15px 15px -15px;
+}
+
+// Alerts
+// -------------------------
+
+.alert {
+  margin-top: 20px;
+}
+
+// Thumbnails
+// -------------------------
+
+.thumbnail {
+  padding: 0;
+  border-radius: 0;
+  box-shadow: 0 0 5px #ccc, inset 0 0 0 #000;
+}
+
+// Font Icons
+// -------------------------
+
+.fa,
+[class^='ion-'] {
+  margin-right: 6px;
+}
+
+// Poll page
+
+.container-fluid {
+  padding-left:  20px;
+  padding-right: 20px;
+}
+
+.btn-answer {
+  border-radius: 5px;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box !important;
+}
+
+.row.comments {
+  -moz-column-width: 25em;
+  -webkit-column-width: 25em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap:1em;
+}
+
+.row.comments > .col-md-4 {
+  display: inline-block;
+  // padding:  .33rem;
+  width:  100%;
+  float:none;
+}
+
+.row.comments .well {
+  position:relative;
+  display: block;
+  cursor: pointer;
+}
+
+.row.comments .well.primary {
+  background-color: lighten(@brand-primary, 47%);
+  border: 2px solid darken(lighten(@brand-primary, 47%), 7%);
+}
+
+.row.comments .well.primary.active {
+  background-color: darken(lighten(@brand-primary, 47%), 7%);
+}
+
+.row.comments .well.danger {
+  background-color: lighten(@brand-danger, 47%);
+  border: 2px solid darken(lighten(@brand-danger, 47%), 7%);
+}
+
+.row.comments .well.danger.active {
+  background-color: darken(lighten(@brand-danger, 47%), 7%);
+}
+
+.row.comments .well.primary.selected {
+  border: 2px dotted #000000;
+}
+
+.row.comments .well.danger.selected {
+  border: 2px dotted #000000;
+}
+
+.well.primary {
+  background-color: lighten(@brand-primary, 47%);
+  border: 2px solid darken(lighten(@brand-primary, 47%), 7%);
+}
+
+.well.danger {
+  background-color: lighten(@brand-danger, 47%);
+  border: 2px solid darken(lighten(@brand-danger, 47%), 7%);
+}
+
+.answer1Color {
+  color: @progress-bar-bg;
+}
+
+.answer2Color {
+  color: @progress-bar-danger-bg
+}
+
+.change-vote-answer1, .change-vote-answer2,
+.change-vote-answer1-new, .change-vote-answer2-new {
+  cursor: pointer;
+}
+
+.agreeNote, .disagreeNote {
+  cursor: pointer;
+}
+
+// Progress bars ==============================================================
+
+.progress {
+  height: 30px;
+  .box-shadow(none);
+  .progress-bar {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}

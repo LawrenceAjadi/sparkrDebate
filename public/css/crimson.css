@@ -1,0 +1,139 @@
+@font-face
+{
+	font-family: Gravity;
+	src: url(/fonts/Gravity-Book.ttf);
+}
+
+@font-face
+{
+	font-family: GravityB;
+	src: url(/fonts/Gravity-Bold.ttf);
+}
+
+@font-face
+{
+	font-family: GravityBI;
+	src: url(/fonts/Gravity-Bold-Italic.ttf);
+}
+
+@font-face
+{
+	font-family: GravityI;
+	src: url(/fonts/Gravity-Book-Italic.ttf);
+}
+
+*
+{
+	font-family: Gravity !important;
+}
+
+
+.nav
+{
+  height: 70px;
+}
+
+.bottomlogo
+{
+  display: block;
+  margin: auto;
+}
+
+
+.maintitle
+{
+  color: white !important;
+  font-family: GravityB !important;
+}
+
+body
+{
+  background-color: white !important;
+}
+
+a, #skip-reason
+{
+  color: #c7193c !important;
+}
+
+.btn-danger,.btn-primary
+{
+  background-color: #c7193c !important;
+  border-color: white !important;
+  color: white !important;
+  font-size: 2em !important;
+  font-weight: bold !important;
+  border-radius: 0px !important;
+}
+
+.btn-danger:hover, .btn-primary:hover
+{
+  background-color: white !important;
+  border-color: #c7193c !important;
+  color: #c7193c !important;
+}
+
+.primary.comment, .danger.comment
+{
+  border-width: 2px;
+  border-style: solid;
+  font-size: 18px;
+  font-family: Helvetica;
+  font-weight: 300;
+}
+
+img
+{
+  image-rendering: auto;
+}
+
+
+.progress-bar.change-vote-answer1, .progress-bar-danger.change-vote-answer2, .progress-bar.change-vote-answer1-new, .progress-bar-danger.change-vote-answer2-new
+{
+  color: white !important;
+}
+
+
+.navting
+{
+  height: 46px;
+  color: white !important;
+  margin-top: 12px;
+}
+
+.btn.btn-default
+{
+  background-color: #c7193c;
+  border-color: #c7193c;
+}
+
+.btn-sm
+{
+  color: #ffffff !important;
+  font-size: 18px !important;
+  font-weight: 100 !important;
+}
+
+.spark-bar-left
+{
+  background-color: #c7193c !important;
+  color: white !important;
+}
+
+.spark-left
+{
+  color: #c7193c !important;
+}
+
+.spark-right
+{
+  color: #E6A6B2 !important;
+}
+
+
+.spark-bar-right
+{
+  background-color: #E6A6B2 !important;
+  color: white !important;
+}
+

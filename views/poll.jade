@@ -1,0 +1,58 @@
+extends layout
+
+block morehead
+  link(rel='stylesheet', href='/css/background.css')
+
+block content
+    br
+    br
+    br
+    br
+    br
+    .question(data-id=question._id.toString())
+    br
+    h1.text-center
+        .maintitle #{question.name}
+    h3.text-center
+        .maintitle #{question.user ? question.user.profile.name : 'anonymous'} asked
+    br
+    br
+    .row
+        if question.loginToVote && !user
+            .col-md-6
+                button.btn.btn-primary.btn-lg.btn-block.btn-answer(type='button', disabled) #{question.answers[0].name}
+            .col-md-6
+                button.btn.btn-danger.btn-lg.btn-block.btn-answer(type='button', disabled) #{question.answers[1].name}
+        else
+            .col-md-6
+                button.btn.btn-primary.btn-lg.btn-block.btn-answer(type='button', data-id=question.answers[0]._id.toString()) #{question.answers[0].name}
+            .col-md-6
+                button.btn.btn-danger.btn-lg.btn-block.btn-answer(type='button', data-id=question.answers[1]._id.toString()) #{question.answers[1].name}
+    br
+    br
+    if question.loginToVote && !user
+        h3.text-center You must login to vote on this poll
+        br
+        .row
+            .col-md-1
+            .col-md-10
+                .row.loginbuttons
+                    .col-md-4
+                        a.btn.btn-block.btn-facebook.btn-social(href='/auth/facebook')
+                            i.fa.fa-facebook
+                            | with Facebook
+                    .col-md-4
+                        a.btn.btn-block.btn-email.btn-social.show-login-form
+                            i.fa.fa-envelope
+                            | with E-mail
+                    .col-md-4
+                        a.btn.btn-block.btn-twitter.btn-social(href='/auth/twitter')
+                            i.fa.fa-twitter
+                            | Twitter
+                .loginform(style='display:none')
+                    - var showSocialButtons = false
+                    include partials/loginForm
+            .col-md-1
+    br
+    br
+    img(src='/images/sparkr_logo_white.svg', style='height: 70px').text-center.bottomlogo

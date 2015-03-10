@@ -1,0 +1,55 @@
+<div class="well well-sm spark">
+  <h3 class="text-center"><%= spark.name %></h3>
+  <h4 class="text-center">by <%= spark.user ? spark.user.profile.name : 'anonymous' %></h4>
+  <hr>
+  <% if (spark.readonly) { %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="progress" style="margin-bottom: 0px;">
+          <div class="progress-bar spark-bar-left" style="width: <%= spark.percentage1 %>%"><%= spark.percentage1 %> %</div>
+          <div class="progress-bar progress-bar-danger spark-bar-right" style="width: <%= spark.percentage2 %>%"><%= spark.percentage2 %> %</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div style="text-align: left;" class="col-xs-4">
+        <strong data-question="<%= spark._id %>" data-id="<%= spark.answers[0]._id %>" style="cursor:pointer; font-size: <%= spark.answers[0]._id.toString() == spark.vote.answer ? "35px" : "20px" %>;" class="answer1Color spark-left"><%= spark.answers[0].name %></strong>
+        <span>(<%= spark.answers[0].votes || 0 %> Votes)</span>
+      </div>
+      <div class="col-xs-4" style="text-align: center;">
+        <% if (spark.isQuestion) { %>
+        <a href="/<%= spark.poll.toString() %>/<%= spark._id.toString() %>" target="_blank" style="margin-top: 7px;" class="btn btn-default btn-sm">open</a>
+        <% } %>
+      </div>
+      <div style="text-align: right;" class="col-xs-4">
+        <span>(<%= spark.answers[1].votes || 0 %> Votes)</span>
+        <strong data-question="<%= spark._id %>" data-id="<%= spark.answers[1]._id %>" style="cursor:pointer; font-size: <%= spark.answers[1]._id.toString() == spark.vote.answer ? "35px" : "20px" %>;" class="answer2Color spark-right"><%= spark.answers[1].name %></strong>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <button type="button" style="width:150px" class="btn btn-primary btn-sm"
+                data-spark="<%= spark._id %>"
+                data-id="<%= spark.answers[0]._id %>"><%= spark.answers[0].name %></button>
+        <div class="text-center">
+          <small data-votes="<%= spark.answers[0].votes || 0 %>"><%= spark.answers[0].votes || 0 %> votes</small>
+        </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <% if (spark.isQuestion) { %>
+        <a href="/<%= spark.poll.toString() %>/<%= spark._id.toString() %>" target="_blank" style="margin-top: 7px;" class="btn btn-default btn-sm">open</a>
+        <% } %>
+      </div>
+      <div class="col-md-4 text-center">
+        <button type="button" style="width:150px" class="btn btn-danger btn-sm"
+                data-spark="<%= spark._id %>"
+                data-id="<%= spark.answers[1]._id %>"><%= spark.answers[1].name %></button>
+        <div class="text-center">
+          <small data-votes="<%= spark.answers[0].votes || 0 %>"><%= spark.answers[1].votes || 0 %> votes</small>
+        </div>
+      </div>
+    </div>
+
+  <% } %>
+</div>

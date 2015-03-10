@@ -1,0 +1,70 @@
+if question.loginToComment === false || user
+    .col-md-5.right(style='display:none')
+        .selected-comment
+        .well.well-sm.text-center.selectedComment.active
+        .row
+            .col-md-3.text-center
+                h3
+                  i.agreeVote(style='color:black; cursor:pointer') [+]
+                span.agreeVote 0 agree
+            .col-md-6.text-center(style='padding-top: 10px;')
+                img#add-sparkr(src='/images/sparkr_logo_image_crimson.png', height='60px', style='cursor:pointer')
+                .text-center
+                    | add new spark
+            .col-md-3.text-center
+                h3
+                  i.disagreeVote(style='color:black; cursor:pointer') [-]
+                span.disagreeVote 0 disagree
+        hr(style="margin-top: 5px;margin-bottom: 5px;")
+        .row
+            .col-md-3.text-center
+                span.agreeNote
+                    i +ve Reply
+            .col-md-6.text-center(style='padding-top: 10px;')
+            .col-md-3.text-center
+                span.disagreeNote
+                    i -ve Reply
+        hr(style="margin-top: 5px;")
+        #add-sparkr-panel.well.well-sm(style='display:none')
+            textarea#reason.form-control(rows='3', style='text-align: center;', placeholder='Sparkr')
+            .row(style='margin-top:5px')
+                .col-md-6.text-center
+                    .input-group
+                        .input-group-addon A1
+                        input.form-control.a1(type='text', placeholder='Answer 1')
+                .col-md-6.text-center
+                    .input-group
+                        .input-group-addon A2
+                        input.form-control.a2(type='text', placeholder='Answer 2')
+            .text-center
+                button.btn.btn-default(type="button", style='width:200px; margin-top:10px') Save
+        // Add note - Agree
+        #add-agree-panel.row(style="margin-bottom: 5px; display:none")
+            .col-md-8
+                .well.well-sm(style="margin-bottom: 0px;padding: 0px;")
+                    textarea#reason.form-control(rows='2', placeholder='Why?', style='resize: none;')
+                .small.text-right
+                    button.btn.btn-success.btn-xs(type="button", style='margin-top:2px') agree
+        // Add note - Disagree
+        #add-disagree-panel.row(style="margin-bottom: 5px; display:none")
+            .col-md-8.col-md-offset-4
+                .well.well-sm(style="margin-bottom: 0px;padding: 0px;")
+                    textarea#reason.form-control(rows='2', placeholder='Why?', style='resize: none;')
+                .small.text-right
+                    button.btn.btn-warning.btn-xs(type="button", style='margin-top:2px') disagree
+        // Examples notes
+        .notes
+            .row(style="margin-bottom: 5px;")
+                .col-md-8
+                    .well.well-sm(style="margin-bottom: 0px;")
+                        | Ovo je super Ovo je super Ovo je super Ovo je super Ovo je super Ovo je super
+                    .small.text-right
+                        | by&nbsp;
+                        strong dsanel
+            .row(style="margin-bottom: 5px;")
+                .col-md-8.col-md-offset-4
+                    .well.well-sm(style="margin-bottom: 0px;")
+                        | Ovo je super
+                    .small.text-right
+                        | by&nbsp;
+                        strong tito

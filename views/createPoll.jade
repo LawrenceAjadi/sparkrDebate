@@ -1,0 +1,57 @@
+extends layout
+
+block content
+    .page-header
+        h3 Create New Pool
+
+
+    form(role='form', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group
+            label(for='question') Question
+            input#question.form-control(type='text', name='name', autofocus=true, value='#{question.name}')
+        div.row
+            div.col-md-6
+                .form-group
+                    label(for='answer1') Answer 1
+                    input(type='hidden', name='answers[0][_id]', value='#{question.answers[0]._id}')
+                    input#answer1.form-control(type='text', name='answers[0][name]', value='#{question.answers[0].name}')
+            div.col-md-6
+                .form-group
+                    label(for='answer2') Answer 2
+                    input(type='hidden', name='answers[1][_id]', value='#{question.answers[1]._id}')
+                    input#answer1.form-control(type='text', name='answers[1][name]', value='#{question.answers[1].name}')
+        div.row
+            div.col-md-6
+                .form-group
+                    label Require Login to Vote
+                    .form-control
+                        label.radio-inline
+                            input(type="radio", name="loginToVote", value="true", checked=question.loginToVote)
+                            | On
+                        label.radio-inline
+                            input(type='radio', name='loginToVote', value="false", checked=!question.loginToVote)
+                            | Off
+            div.col-md-6
+                .form-group
+                    label Require Login to Comment
+                    .form-control
+                        label.radio-inline
+                            input(type="radio", name="loginToComment", value="true", checked=question.loginToComment)
+                            | On
+                        label.radio-inline
+                            input(type='radio', name='loginToComment', value="false", checked=!question.loginToComment)
+                            | Off
+        div.row
+            div.col-md-6
+                .form-group
+                    label Anonymous comments
+                    .form-control
+                        label.radio-inline
+                            input(type='radio', name='anonymousComments', value='true', checked=question.anonymousComments)
+                            | On
+                        label.radio-inline
+                            input(type='radio', name='anonymousComments', value='false', checked=!question.anonymousComments)
+                            | Off
+        br
+        button.btn.btn-primary(type='submit') Create poll
